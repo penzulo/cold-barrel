@@ -5,13 +5,13 @@ import * as schema from "./schema";
 let dbInstance: ReturnType<typeof drizzle> | null = null;
 
 export function getDb() {
-  if (dbInstance) return dbInstance;
+	if (dbInstance) return dbInstance;
 
-  // Use /tmp for serverless/lambda environment (Netlify/Vercel) or a custom path
-  const dbPath = process.env.SQLITE_DB_PATH || "/tmp/cold-barrel.db";
-  const sqlite = new DatabaseSync(dbPath);
+	// Use /tmp for serverless/lambda environment (Netlify/Vercel) or a custom path
+	const dbPath = process.env.SQLITE_DB_PATH || "/tmp/cold-barrel.db";
+	const sqlite = new DatabaseSync(dbPath);
 
-  sqlite.exec(`
+	sqlite.exec(`
     CREATE TABLE IF NOT EXISTS enquiries (
       id TEXT PRIMARY KEY,
       name TEXT NOT NULL,
@@ -25,22 +25,32 @@ export function getDb() {
     );
   `);
 
-  dbInstance = drizzle(
-    async (sql: string, params: unknown[], method: string) => {
-      if (method === "all") {
-        const rows = sqlite.prepare(sql).all(...(params as (string | number | bigint | Buffer | null)[]));
-        return { rows: rows.map((r) => Object.values(r as Record<string, unknown>)) };
-      } else if (method === "get") {
-        const row = sqlite.prepare(sql).get(...(params as (string | number | bigint | Buffer | null)[]));
-        return { rows: row ? Object.values(row as Record<string, unknown>) : [] };
-      } else if (method === "run") {
-        sqlite.prepare(sql).run(...(params as (string | number | bigint | Buffer | null)[]));
-        return { rows: [] };
-      }
-      return { rows: [] };
-    },
-    { schema }
-  );
+	dbInstance = drizzle(
+		async (sql: string, params: unknown[], method: string) => {
+			if (method === "all") {
+				const rows = sqlite
+					.prepare(sql)
+					.all(...(params as (string | number | bigint | Buffer | null)[]));
+				return {
+					rows: rows.map((r) => Object.values(r as Record<string, unknown>)),
+				};
+			} else if (method === "get") {
+				const row = sqlite
+					.prepare(sql)
+					.get(...(params as (string | number | bigint | Buffer | null)[]));
+				return {
+					rows: row ? Object.values(row as Record<string, unknown>) : [],
+				};
+			} else if (method === "run") {
+				sqlite
+					.prepare(sql)
+					.run(...(params as (string | number | bigint | Buffer | null)[]));
+				return { rows: [] };
+			}
+			return { rows: [] };
+		},
+		{ schema },
+	);
 
-  return dbInstance;
+	return dbInstance;
 }

@@ -8,9 +8,9 @@ configureToolEnvironment(projectRoot);
 
 process.chdir(projectRoot);
 for (const directory of [
-  path.dirname(process.env.WRANGLER_LOG_PATH),
-  process.env.WRANGLER_REGISTRY_PATH,
-  process.env.MINIFLARE_REGISTRY_PATH,
+	path.dirname(process.env.WRANGLER_LOG_PATH),
+	process.env.WRANGLER_REGISTRY_PATH,
+	process.env.MINIFLARE_REGISTRY_PATH,
 ]) {
-  mkdirSync(directory, { recursive: true });
+	mkdirSync(directory, { recursive: true });
 }

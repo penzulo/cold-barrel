@@ -69,19 +69,21 @@ Treat the full name as optional and fall back to email when it is absent:
 import { headers } from "next/headers";
 
 export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
+	const requestHeaders = await headers();
+	const userId = requestHeaders.get("oai-authenticated-user-id");
+	const email = requestHeaders.get("oai-authenticated-user-email");
+	const encodedFullName = requestHeaders.get(
+		"oai-authenticated-user-full-name",
+	);
+	const fullName =
+		encodedFullName &&
+		requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
+			"percent-encoded-utf-8"
+			? decodeURIComponent(encodedFullName)
+			: null;
 
-  const displayName = fullName ?? email;
-  // ...
+	const displayName = fullName ?? email;
+	// ...
 }
 ```
 
