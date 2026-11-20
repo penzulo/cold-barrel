@@ -6,14 +6,10 @@
 		"node": ">=22.13.0"
 	},
 	"scripts": {
-		"install:ci": "node scripts/install-ci.mjs",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"dev:vinext": "node scripts/run-framework.mjs dev",
-		"build:vinext": "node scripts/run-framework.mjs build",
-		"lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-		"db:generate": "drizzle-kit generate"
+		"lint": "eslint ."
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.7.0",

@@ -47,7 +47,7 @@ export async function POST(request: Request) {
 		return invalid("Enter a valid Indian mobile number.");
 	if (!location || location.length > 240 || !/^[1-9][0-9]{5}$/.test(pin))
 		return invalid("Enter a delivery location and a six-digit PIN code.");
-	const parsedDate = new Date(deliveryDate + "T00:00:00Z");
+	const parsedDate = new Date(`${deliveryDate}T00:00:00Z`);
 	if (
 		!/^\d{4}-\d{2}-\d{2}$/.test(deliveryDate) ||
 		!Number.isFinite(parsedDate.valueOf()) ||
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
 			const { error } = await supabase.from("enquiries").insert({
 				id,
 				name,
-				phone: "+91" + phone.slice(-10),
+				phone: `+91${phone.slice(-10)}`,
 				location,
 				pin,
 				delivery_date: deliveryDate,

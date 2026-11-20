@@ -3,7 +3,6 @@ import { getDb } from "../../../db";
 import { enquiries } from "../../../db/schema";
 import { flavours, PRICE, rupees } from "../../../lib/cold-barrel";
 import { supabase } from "../../../lib/supabase";
-import { chatGPTSignInPath, getChatGPTUser } from "../../chatgpt-auth";
 
 export const metadata = {
 	title: "Team Inbox",
@@ -34,37 +33,19 @@ export default async function Inbox({
 	searchParams: Promise<{ page?: string; secret?: string }>;
 }) {
 	const params = await searchParams;
-	const user = await getChatGPTUser();
-	const ownerEmail = process.env.INBOX_OWNER_EMAIL;
 	const inboxSecret = process.env.INBOX_SECRET;
 
 	// Access control:
-	// 1. If INBOX_SECRET is configured, require ?secret=<INBOX_SECRET>
-	// 2. Or if INBOX_OWNER_EMAIL + ChatGPT SSO is configured, check user.email
-	// 3. Otherwise (dev / initial Netlify setup without secret), permit viewing
-	const isAuthorized =
-		(inboxSecret && params.secret === inboxSecret) ||
-		(ownerEmail && user && user.email.toLowerCase() === ownerEmail.toLowerCase()) ||
-		(!inboxSecret && !ownerEmail);
+	// If INBOX_SECRET is configured, require ?secret=<INBOX_SECRET> in the URL
+	const isAuthorized = !inboxSecret || params.secret === inboxSecret;
 
 	if (!isAuthorized) {
 		return (
 			<section className="wide section page-top">
 				<h1>Team inbox</h1>
 				<p>
-					{inboxSecret
-						? "Access restricted. Provide the ?secret= passcode in the URL to view enquiries."
-						: "Sign in with your Cold Barrel team account or set INBOX_SECRET in your environment variables."}
+					Access restricted. Provide the <code>?secret=</code> passcode in the URL to view enquiries.
 				</p>
-				{user ? null : (
-					<a
-						className="button"
-						href={chatGPTSignInPath("/team/inbox")}
-						target="_top"
-					>
-						Sign in
-					</a>
-				)}
 			</section>
 		);
 	}
