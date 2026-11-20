@@ -1,4 +1,3 @@
-import { env } from 'cloudflare:workers';
 import { desc } from 'drizzle-orm';
 import { getDb } from '../../../db';
 import { enquiries } from '../../../db/schema';
@@ -13,7 +12,8 @@ const dateLabel = new Intl.DateTimeFormat('en-IN', { dateStyle: 'medium', timeZo
 export default async function Inbox({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
   const user = await getChatGPTUser();
   if (!user) return <section className="wide section page-top"><h1>Team inbox</h1><p>Sign in with your Cold Barrel team account.</p><a className="button" href={chatGPTSignInPath('/team/inbox')} target="_top">Sign in</a></section>;
-  if (!env.INBOX_OWNER_EMAIL || user.email.toLowerCase() !== env.INBOX_OWNER_EMAIL.toLowerCase()) {
+  const ownerEmail = process.env.INBOX_OWNER_EMAIL;
+  if (!ownerEmail || user.email.toLowerCase() !== ownerEmail.toLowerCase()) {
     return <section className="wide section page-top"><h1>Team inbox</h1><p>This inbox is available to the Cold Barrel owner account.</p></section>;
   }
   const requestedPage = Number((await searchParams).page);
