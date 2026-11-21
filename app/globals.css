@@ -1,12 +1,30 @@
 :root {
-	--cream: #fff8f1;
-	--paper: #fffdf9;
-	--ink: #251717;
-	--muted: #665451;
-	--berry: #6e1e3a;
-	--dark: #461629;
-	--line: #e8d4cd;
-	--pink: #fae9e8;
+	/* Brand Color Palette */
+	--color-froth: #fffbf2;
+	--color-honey: #fee099;
+	--color-linden: #cad182;
+	--color-persimmon: #e88d5f;
+	--color-coral: #ff724c;
+	--color-amber: #fdbf50;
+	--color-slate-light: #f4f4f8;
+	--color-slate-dark: #2a2c41;
+
+	/* Semantic Theme Tokens */
+	--cream: var(--color-froth);
+	--paper: #ffffff;
+	--ink: var(--color-slate-dark);
+	--muted: #64677f;
+	--berry: var(--color-coral);
+	--dark: #202234;
+	--line: #e8e2d4;
+	--pink: #fff2db;
+
+	/* Extended Brand Accents */
+	--persimmon: var(--color-persimmon);
+	--honey: var(--color-honey);
+	--linden: var(--color-linden);
+	--amber: var(--color-amber);
+
 	--display: Georgia, "Times New Roman", serif;
 	font-family: Arial, Helvetica, sans-serif;
 	color: var(--ink);
@@ -64,7 +82,7 @@ input {
 	-webkit-tap-highlight-color: transparent;
 }
 :focus-visible {
-	outline: 3px solid #a52b5a;
+	outline: 3px solid var(--berry);
 	outline-offset: 4px;
 }
 .skip {
@@ -214,7 +232,7 @@ input {
 	overflow: hidden;
 	border-radius: 14px 14px 45% 45% / 14px 14px 12% 12%;
 	background: var(--pink);
-	box-shadow: 0 17px 37px #7831491b;
+	box-shadow: 0 17px 37px rgba(42, 44, 65, 0.08);
 }
 .hero-image img {
 	width: 100%;
@@ -292,7 +310,7 @@ input {
 }
 .flavour-card:hover {
 	transform: translateY(-4px);
-	box-shadow: 0 12px 22px #78314920;
+	box-shadow: 0 12px 22px rgba(42, 44, 65, 0.1);
 }
 .flavour-card a {
 	text-decoration: none;
@@ -477,7 +495,7 @@ fieldset {
 	min-height: 46px;
 	padding: 0.62rem 0.7rem;
 	border-radius: 6px;
-	border: 1px solid #bca39c;
+	border: 1px solid var(--line);
 	color: var(--ink);
 	background: white;
 	font: inherit;
@@ -508,7 +526,7 @@ fieldset {
 	gap: 0.45rem;
 	align-items: center;
 	min-height: 44px;
-	border: 1px solid #bca39c;
+	border: 1px solid var(--line);
 	border-radius: 6px;
 	padding: 0.45rem 0.7rem;
 	cursor: pointer;
@@ -538,7 +556,7 @@ fieldset {
 	font-weight: 700;
 	color: var(--berry);
 	padding: 0.85rem 0 0.4rem;
-	border-top: 1px solid #dcc0c0;
+	border-top: 1px solid var(--line);
 	margin-top: 0.65rem;
 }
 .estimate output {
@@ -552,7 +570,7 @@ fieldset {
 .estimate hr {
 	margin: 1.1rem 0;
 	border: 0;
-	border-top: 1px solid #dcc0c0;
+	border-top: 1px solid var(--line);
 }
 .error {
 	color: #a02238;
