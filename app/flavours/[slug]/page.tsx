@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
-import { flavours } from "../../../lib/cold-barrel";
+import { flavours, PRESERVATIVE_NOTE } from "../../../lib/cold-barrel";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -36,6 +36,7 @@ export default async function FlavourPage({ params }: Props) {
 					<br />
 					Pune delivery charged separately.
 				</p>
+				<p className="ingredients-note">{PRESERVATIVE_NOTE}</p>
 				<a className="button" href={"/enquiry?flavour=" + flavour.slug}>
 					Enquire about this flavour
 				</a>

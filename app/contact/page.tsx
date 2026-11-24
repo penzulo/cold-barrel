@@ -1,5 +1,5 @@
 import { OrderFacts } from "../../components/cold-barrel";
-import { INSTAGRAM, PHONE, PHONE_LINK } from "../../lib/cold-barrel";
+import { INSTAGRAM, PHONE, PHONE_LINK, WHATSAPP } from "../../lib/cold-barrel";
 
 export const metadata = { title: "Delivery & Contact" };
 
@@ -18,7 +18,9 @@ export default function Contact() {
 					<h2>How to order</h2>
 					<ol className="steps">
 						<li>Choose your preferred flavours.</li>
-						<li>Send us your date, Pune delivery location and total litres.</li>
+						<li>
+							Send us your date, Pune delivery location and total litres on WhatsApp.
+						</li>
 						<li>We’ll call to confirm your order and delivery charge.</li>
 					</ol>
 					<a className="button" href="/enquiry">
@@ -30,6 +32,11 @@ export default function Contact() {
 					<p>
 						<a className="text-link" href={PHONE_LINK}>
 							{PHONE}
+						</a>
+					</p>
+					<p>
+						<a className="text-link" href={WHATSAPP}>
+							Chat on WhatsApp
 						</a>
 					</p>
 					<p>

@@ -15,8 +15,7 @@ export default async function Enquiry({
 			<p className="eyebrow">Bulk orders across Pune</p>
 			<h1>Send an enquiry.</h1>
 			<p className="intro">
-				Share the details for your event. We’ll call you to confirm your order
-				and delivery charge.
+				Tell us about your event and send your details to Cold Barrel on WhatsApp. We’ll confirm availability and the delivery charge.
 			</p>
 			<EnquiryForm
 				selected={

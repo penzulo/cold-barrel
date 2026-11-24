@@ -2,6 +2,9 @@ export const PRICE = 300;
 export const MIN_LITRES = 5;
 export const PHONE = "+91 95038 77125";
 export const PHONE_LINK = "tel:+919503877125";
+export const WHATSAPP = "https://wa.me/919503877125";
+export const PRESERVATIVE_NOTE =
+	"We don’t add any preservatives when preparing our milkshakes. The syrups we use already contain preservatives.";
 export const INSTAGRAM = "https://www.instagram.com/coldbarrelbeverages/";
 
 export const flavours = [

@@ -1,4 +1,5 @@
 import { FlavourGrid } from "../../components/cold-barrel";
+import { PRESERVATIVE_NOTE } from "../../lib/cold-barrel";
 
 export const metadata = { title: "Flavours" };
 
@@ -11,6 +12,7 @@ export default function Menu() {
 				Five thick, creamy favourites, all ₹300 per litre.
 			</p>
 			<FlavourGrid />
+			<p className="ingredients-note">{PRESERVATIVE_NOTE}</p>
 		</section>
 	);
 }

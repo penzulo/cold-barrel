@@ -1,4 +1,5 @@
 import { FlavourGrid, OrderFacts } from "../components/cold-barrel";
+import { PRESERVATIVE_NOTE } from "../lib/cold-barrel";
 
 export default function Home() {
 	return (
@@ -46,13 +47,24 @@ export default function Home() {
 				</div>
 				<FlavourGrid />
 			</section>
+			<section
+				className="wide registration-summary"
+				aria-labelledby="ingredients-heading"
+			>
+				<div>
+					<h2 id="ingredients-heading">Ingredients &amp; registration</h2>
+					<p>{PRESERVATIVE_NOTE}</p>
+				</div>
+				<a className="text-link" href="/food-registration">
+					View FSSAI registration
+				</a>
+			</section>
 			<section className="order-banner">
 				<div className="wide banner-inner">
 					<div>
 						<h2>Planning an event?</h2>
 						<p>
-							Share your date, location and how many litres you need. We’ll call
-							you to confirm the details.
+							Share your date, location and how many litres you need on WhatsApp.
 						</p>
 					</div>
 					<a className="button light" href="/enquiry">

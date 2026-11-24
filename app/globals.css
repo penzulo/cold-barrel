@@ -699,3 +699,41 @@ fieldset {
 		transition: none;
 	}
 }
+
+.registration-summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem 2rem;
+	border-top: 1px solid var(--line);
+	padding-block: 2rem;
+}
+.registration-summary h2 {
+	font-size: clamp(1.65rem, 3vw, 2.45rem);
+}
+.registration-summary p,
+.ingredients-note,
+.whatsapp-note {
+	margin-top: 0.75rem;
+	color: var(--muted);
+}
+.registration-details {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 0.7rem;
+	margin: 1rem 0 1.3rem;
+}
+.registration-details dt {
+	font-weight: 700;
+}
+.registration-details dd {
+	overflow-wrap: anywhere;
+}
+.card-image img {
+	object-position: center;
+}
+.detail-image img {
+	aspect-ratio: 1;
+	height: auto;
+}
