@@ -580,28 +580,6 @@ fieldset {
 .confirmation p {
 	margin: 0.9rem 0;
 }
-.inbox-grid {
-	list-style: none;
-	margin: 1.5rem 0 0;
-	padding: 0;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
-	gap: 1rem;
-}
-.inbox-grid h2 {
-	margin-bottom: 0.45rem;
-	overflow-wrap: anywhere;
-}
-.inbox-details {
-	margin-top: 1rem;
-	display: grid;
-	grid-template-columns: auto 1fr;
-	gap: 0.65rem;
-	overflow-wrap: anywhere;
-}
-.inbox-details dt {
-	font-weight: 700;
-}
 @media (max-width: 1050px) {
 	.wide {
 		width: calc(100% - 3.2rem);

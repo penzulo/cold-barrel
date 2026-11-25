@@ -42,7 +42,6 @@ export function Footer() {
 					<a href={PHONE_LINK}>{PHONE}</a>
 					<a href={INSTAGRAM}>Instagram</a>
 					<a href="/food-registration">FSSAI registration</a>
-					<a href="/team/inbox">Team inbox</a>
 				</div>
 			</div>
 		</footer>
