@@ -7,9 +7,29 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
 	const { slug } = await params;
 	const flavour = flavours.find((item) => item.slug === slug);
-	return flavour
-		? { title: flavour.name, description: flavour.description }
-		: {};
+	if (!flavour) return {};
+	return {
+		title: flavour.name,
+		description: flavour.description,
+		openGraph: {
+			title: `${flavour.name} | Cold Barrel`,
+			description: flavour.description,
+			images: [
+				{
+					url: `/photos/${flavour.slug}.webp`,
+					width: 800,
+					height: 800,
+					alt: flavour.name,
+				},
+			],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: `${flavour.name} | Cold Barrel`,
+			description: flavour.description,
+			images: [`/photos/${flavour.slug}.webp`],
+		},
+	};
 }
 
 export function generateStaticParams() {
