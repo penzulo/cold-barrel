@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Footer, Header } from "../components/cold-barrel";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://coldbarrel.in";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://coldbarrel.shop";
 
 export const viewport: Viewport = {
 	themeColor: "#FFFBF2",
@@ -40,9 +40,7 @@ export const metadata: Metadata = {
 			{ url: "/favicon.svg", type: "image/svg+xml" },
 			{ url: "/photos/barrel.png", type: "image/png" },
 		],
-		apple: [
-			{ url: "/photos/barrel.png", sizes: "180x180", type: "image/png" },
-		],
+		apple: [{ url: "/photos/barrel.png", sizes: "180x180", type: "image/png" }],
 		shortcut: ["/photos/barrel.png"],
 	},
 	openGraph: {
